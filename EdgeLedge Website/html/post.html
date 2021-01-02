@@ -53,21 +53,16 @@
 
     <script>
         const navbar = document.getElementById('navbar');
-        let scrolled = false;
+        let scrolled = 0;
 
-        window.onscroll = function() {
-            if (window.pageYOffset > 100) {
+        window.addEventListener = function() {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > scrolled) {
                 navbar.classList.remove('top');
-                if(!scrolled) {
-                    navbar.style.transform = 'translateY(-70px)'
-                }
-                setTimeout(() => {
-                    navbar.style.transform = 'translateY(0)'
-                    scrolled = true
-                }, 200)
+                navbar.style.transform = 'translateY(-70px)'
             } else {
                 navbar.classList.add('top');
-                scrolled = false
+                navbar.style.transform = 'translateY(0px)'
             }
         }
 
